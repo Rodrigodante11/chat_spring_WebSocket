@@ -1,0 +1,32 @@
+<html>
+
+<head>
+    <title>Curso Chat</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <h1>Curso Chat</h1>
+
+    <div class="checking-auth-area">
+        Verificando login...
+    </div>
+
+    <div class="non-auth-area">
+        <button id="login-button">Entrar</button>
+    </div>
+
+    <div class="auth-area">
+        <nav>
+            <button id="get-jwt-button">Obter token JWT ( teste )</button>
+            <button id="logout-button">Sair</button>
+        </nav>
+        <p>Olá, <span class="user-name">...</span></p>
+    </div>
+
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
