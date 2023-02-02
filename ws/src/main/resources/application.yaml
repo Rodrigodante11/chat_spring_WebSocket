@@ -6,3 +6,7 @@ spring:
     type: redis
     redis:
       time-to-live: 600000
+
+app:
+  auth:
+    jwks-url: https://dev-yxyi151pqcfxxapg.us.auth0.com/.well-known/jwks.json

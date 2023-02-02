@@ -1,0 +1,21 @@
+package com.cursochat.ws.providers;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.Map;
+
+@SpringBootTest
+public class JsonWebTokenProviderTest {
+    @Autowired
+    private TokenProvider tokenProvider;
+
+    @Test
+    void test(){
+        // Pegar o token pelo server local (http://127.0.0.1:3000/) apos subir o server e pegar no console o token
+        // gerado apos o click do botao "Obter token JWT(teste"
+        Map<String, String> decoded = tokenProvider.decode("eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkZIVFJCWm11UzVJY29YSHZtbGdINyJ9.eyJnaXZlbl9uYW1lIjoiUm9kcmlnbyIsImZhbWlseV9uYW1lIjoiQXVndXN0byIsIm5pY2tuYW1lIjoicm9kcmlnb2F1Z3VzdG84MzkiLCJuYW1lIjoiUm9kcmlnbyBBdWd1c3RvIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FFZEZUcDVhS29XeGFxczhuRnNYRmxHUGdVdUY3MU5wanh5OXpiUU52UGVwdUE9czk2LWMiLCJsb2NhbGUiOiJwdC1CUiIsInVwZGF0ZWRfYXQiOiIyMDIzLTAyLTAyVDE4OjQ5OjUyLjUxN1oiLCJlbWFpbCI6InJvZHJpZ29hdWd1c3RvODM5QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczovL2Rldi15eHlpMTUxcHFjZnh4YXBnLnVzLmF1dGgwLmNvbS8iLCJhdWQiOiI5SzNxN3ZBM0J6RDhFM3RwOG9GOExOUEZMb2loMXBKWCIsImlhdCI6MTY3NTM2Mzc5NCwiZXhwIjoxNjc1Mzk5Nzk0LCJzdWIiOiJnb29nbGUtb2F1dGgyfDEwNTM0MDU5ODIwODczMjY2NDY1OSIsInNpZCI6InJLc0J2TVhWNXd4T0NWam9GaUZaQkJzeGtsLTBDUFppIiwibm9uY2UiOiJTVlpoY2xkZlIzUnhUMlp3WTFkbFZqa3dVa2xJUWpKc0xXeEdXbnB3VmtwSE5HVTVia0paUnpCa1NRPT0ifQ.rAe_3pN0CPtr-1wiTdDLbBUTLhfw8bwt8ShVzwlFr4BJ16144DyaSVKInhMxV4xNdGWklqt33G_8vW-MgS28ocV44Z778YB8-uD3Ep_QknHuHYFtmmisNUcd3B8s8IMjs7dcL-HkzwS9dNq9rDJzYIt5r1PwqsJ7yq0cl7R30TEG1qvATKRkUqZtZfiQu5nKt5dBulAjoKv7MQeMe-cFpEwtTdJIek6utIIIRjnEtgjjmOCeJvTjzAROrggDyiKe5YKnROTWhzJDUL8ZCRkwQsWGsx5DJnE9oUjc7jjuxYxg3P8c9Cp81uPnLdBIdLz3ivZS9sZ8cAf8yHeYNvlUug");
+        System.out.println(decoded);
+    }
+}
