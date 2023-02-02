@@ -9,9 +9,7 @@ import org.springframework.cache.annotation.EnableCaching;
 public class WsApplication {
 
 	public static void main(String[] args) {
-
 		SpringApplication.run(WsApplication.class, args);
-
 	}
 
 }
