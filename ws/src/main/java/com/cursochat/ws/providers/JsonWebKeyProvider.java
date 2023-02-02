@@ -1,6 +1,5 @@
 package com.cursochat.ws.providers;
 
-import com.auth0.jwk.InvalidPublicKeyException;
 import com.auth0.jwk.Jwk;
 import com.auth0.jwk.JwkException;
 import com.auth0.jwk.UrlJwkProvider;
@@ -13,32 +12,28 @@ import java.net.URL;
 import java.security.PublicKey;
 
 @Component
-public class JsonWebKeyProvider implements KeyProvider{
+public class JsonWebKeyProvider implements KeyProvider {
 
-    // pegando a chave public do auth0 para atenticacao por cache
     private final UrlJwkProvider provider;
 
-    public JsonWebKeyProvider(@Value("${app.auth.jwks-url}") final String jwksUrl){
-
-        try{
+    public JsonWebKeyProvider(@Value("${app.auth.jwks-url}") final String jwksUrl) {
+        try {
             this.provider = new UrlJwkProvider(new URL(jwksUrl));
-        }catch (MalformedURLException e){
+        } catch (MalformedURLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
-
     }
 
-    @Cacheable("public-key")  // o cacheable para pegar a primeira vez e armazenar em cache e depois so retorna o que ja esta em cache
     @Override
+    @Cacheable("public-key")
     public PublicKey getPublicKey(String keyId) {
-        try{
+        try {
             final Jwk jwk = provider.get(keyId);
             return jwk.getPublicKey();
         } catch (JwkException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
-
     }
 }

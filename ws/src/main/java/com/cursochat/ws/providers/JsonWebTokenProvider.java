@@ -24,18 +24,15 @@ public class JsonWebTokenProvider implements TokenProvider{
         PublicKey publicKey = keyProvider.getPublicKey(jwt.getKeyId());
         Algorithm algorithm = Algorithm.RSA256((RSAPublicKey) publicKey, null);
         algorithm.verify(jwt);
-
-        //verificando se o token expirou
         boolean expired = jwt
                 .getExpiresAtAsInstant()
                 .atZone(ZoneId.systemDefault())
                 .isBefore(ZonedDateTime.now());
-
-        if (expired) throw  new RuntimeException("token is expired");
+        if(expired) throw new RuntimeException("token is expired");
         return Map.of(
                 "id", jwt.getSubject(),
                 "name", jwt.getClaim("name").asString(),
-                "picture",jwt.getClaim("picture").asString()
+                "picture", jwt.getClaim("picture").asString()
         );
     }
 }
