@@ -1,0 +1,9 @@
+version: '3.9'
+services:
+  redis:
+    image: redis:7.0.5-alpine
+    restart: always
+    ports:
+      - 6379:6379
+    environment:
+      ALLOW_EMPTY_PASSWORD: yes
