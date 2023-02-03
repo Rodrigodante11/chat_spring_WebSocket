@@ -7,3 +7,12 @@ services:
       - 6379:6379
     environment:
       ALLOW_EMPTY_PASSWORD: yes
+
+  mongodb:
+    image: mongo:5.0
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root

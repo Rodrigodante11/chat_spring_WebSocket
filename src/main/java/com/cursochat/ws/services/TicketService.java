@@ -1,5 +1,7 @@
 package com.cursochat.ws.services;
 
+import com.cursochat.ws.data.User;
+import com.cursochat.ws.data.UserRepository;
 import com.cursochat.ws.providers.TokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -18,6 +20,8 @@ public class TicketService {
 
     @Autowired
     private TokenProvider tokenProvider;
+    @Autowired
+    private UserRepository userRepository;
 
     public String buildAndSaveTicket(String token){
         if(token == null || token.isBlank()) throw new RuntimeException("missing token");
@@ -25,7 +29,12 @@ public class TicketService {
         Map<String, String> user = tokenProvider.decode(token);
         String userId = user.get("id");
         redisTemplate.opsForValue().set(ticket, userId, Duration.ofSeconds(10L));
+        saveUser(user);
         return ticket;
+    }
+
+    private void saveUser(Map<String, String> user){
+        userRepository.save(new User(user.get("id"), user.get("name"), user.get("picture")));
     }
 
     public Optional<String> getUserIdByTicket(String ticket){
