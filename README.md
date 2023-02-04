@@ -1,5 +1,3 @@
-# chat_spring_WebSocket
-
 ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
 
 <h1 aligh="center"> Comunicação em Tempo Real com Spring Boot, WebSocket e Redis/com docker
