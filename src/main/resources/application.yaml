@@ -12,7 +12,6 @@ spring:
       uri: ${MONGO_DB_URI:mongodb://root:root@localhost}
       database: ${MONGODB_DATABASE:chatDb}
 
-
 app:
   auth:
     jwks-url: https://dev-yxyi151pqcfxxapg.us.auth0.com/.well-known/jwks.json
